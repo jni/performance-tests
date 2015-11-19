@@ -1,0 +1,18 @@
+Simply putting the code in a Cython file speeds it up by 36%:
+
+```python
+In [1]: import genfilt as c
+
+In [2]: import genfilt_py as p
+
+In [3]: import numpy as np
+
+In [6]: image = np.random.rand(500, 500)
+
+In [7]: %timeit out = c.maximum_filter(image)
+1 loops, best of 3: 347 ms per loop
+
+In [8]: %timeit out = p.maximum_filter(image)
+1 loops, best of 3: 543 ms per loop
+```
+
