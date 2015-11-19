@@ -16,3 +16,29 @@ In [8]: %timeit out = p.maximum_filter(image)
 1 loops, best of 3: 543 ms per loop
 ```
 
+Adding the Cython decorators (boundcheck and wraparound) by themselves made no
+discernible difference:
+
+```
+1 loops, best of 3: 354 ms per loop
+1 loops, best of 3: 576 ms per loop
+```
+
+Improbably, adding types to the Cython function slowed it way down!
+
+```python
+@cython.boundscheck(False)
+@cython.wraparound(False)
+def _max(double [::1] arr, int n):
+    cdef double m = arr[0]
+    cdef Py_ssize_t i
+    for i in range(1, n):
+        if arr[i] > m:
+            m = arr[i]
+    return m
+```
+
+```
+1 loops, best of 3: 524 ms per loop
+1 loops, best of 3: 578 ms per loop
+```

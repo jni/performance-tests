@@ -1,8 +1,12 @@
 from scipy import ndimage as ndi
 import numpy as np
+import cython
 
-def _max(arr, n):
-    m = arr[0]
+@cython.boundscheck(False)
+@cython.wraparound(False)
+def _max(double [::1] arr, int n):
+    cdef double m = arr[0]
+    cdef Py_ssize_t i
     for i in range(1, n):
         if arr[i] > m:
             m = arr[i]
