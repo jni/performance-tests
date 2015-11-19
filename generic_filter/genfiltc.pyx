@@ -3,6 +3,9 @@ import numpy as np
 cimport numpy as cnp
 import cython
 
+# THIS CODE DOESN'T WORK.
+# Can't pass a C function to a Python function.
+#
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
