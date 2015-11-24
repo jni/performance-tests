@@ -1,0 +1,10 @@
+timing function: alloc_broadcast
+1 loops, best of 3: 1.87 s per loop
+timing function: alloc_cp
+1 loops, best of 3: 1.52 s per loop
+timing function: alloc_cp_same
+1 loops, best of 3: 1.43 s per loop
+timing function: alloc_in_loop
+1 loops, best of 3: 1.06 s per loop
+timing function: alloc_out_loop
+1 loops, best of 3: 1.58 s per loop
